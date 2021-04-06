@@ -8,88 +8,93 @@ namespace Snake
 {
     class Program
     {
-        public static class Globals
+        public static class Snake
         {
-            public static List<string> FrameChar { get; set; } = new List<string>();
             public static List<int> Location { get; set; } = new List<int>();
-            public static StringBuilder FrameString { get; set; } = new StringBuilder();
-            public static StringBuilder Display { get; set; } = new StringBuilder();
             public static bool Dead { get; set; } = false;
             public static int Length { get; set; } = 1;
             public static string Direction { get; set; } = "Right";           
         }
+
+        public static class Display
+        {
+            public static List<string> FrameChar { get; set; } = new List<string>();
+            public static StringBuilder FrameString { get; set; } = new StringBuilder();
+            public static StringBuilder DisplayFrame { get; set; } = new StringBuilder();
+        }
+
         static void Main(string[] args)
         {
             Frame.SetFrame();
 
-            Globals.FrameChar.AddRange(Globals.FrameString.ToString().Select(Chars => Chars.ToString()));
+            Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
             int Start = 32;
-            int Position = (Globals.FrameChar.Count / 2) + ((Start / 2) - 2);
+            int Position = (Display.FrameChar.Count / 2) + ((Start / 2) - 2);
 
             Task.Factory.StartNew(() => Key.Press());
 
             do
             {
-                if (Globals.Direction == "Right")
+                if (Snake.Direction == "Right")
                 {
                     Position++;
                 }
-                if (Globals.Direction == "Down")
+                if (Snake.Direction == "Down")
                 {
                     Position += Start;
                 }
-                if (Globals.Direction == "Left")
+                if (Snake.Direction == "Left")
                 {
                     Position--;
                 }
-                if (Globals.Direction == "Up")
+                if (Snake.Direction == "Up")
                 {
                     Position -= Start;
                 }
 
 
-                Globals.Location.Add(Position);
+                Snake.Location.Add(Position);
 
-                Globals.FrameChar.Clear();
-                Globals.FrameChar.AddRange(Globals.FrameString.ToString().Select(Chars => Chars.ToString()));
+                Display.FrameChar.Clear();
+                Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
-                Globals.FrameChar[360] = "§";
+                Display.FrameChar[360] = "§";
 
-                if(Globals.FrameChar[Position] == "§")
+                if(Display.FrameChar[Position] == "§")
                 {
                     Console.Beep(330, 400);
-                    Globals.Length++;
+                    Snake.Length++;
                 }
 
-                Globals.Location.Reverse();
-                int[] Locations = Globals.Location.ToArray();
-                Globals.Location.Reverse();
+                Snake.Location.Reverse();
+                int[] Locations = Snake.Location.ToArray();
+                Snake.Location.Reverse();
 
-                Globals.FrameChar[Position] = "Θ";
-                if (Locations.Length > Globals.Length)
+                Display.FrameChar[Position] = "Θ";
+                if (Locations.Length > Snake.Length)
                 {
-                    for (int i = 1; i < Globals.Length; i++)
+                    for (int i = 1; i < Snake.Length; i++)
                     {
-                        Globals.FrameChar[Locations[i]] = "O";
+                        Display.FrameChar[Locations[i]] = "O";
                     }
                 }
 
-                if (Globals.FrameChar[Position] != " " && Globals.FrameChar[Position] != "§" && Globals.FrameChar[Position] != "Θ")
+                if (Display.FrameChar[Position] != " " && Display.FrameChar[Position] != "§" && Display.FrameChar[Position] != "Θ")
                 {
-                    Globals.Dead = true;
+                    Snake.Dead = true;
                 }
 
 
-                Globals.Display.Clear();
-                Globals.FrameChar.ForEach(Item => Globals.Display.Append(Item));
+                Display.DisplayFrame.Clear();
+                Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
 
                 Console.Clear();
-                Console.Write(Globals.Display);
+                Console.Write(Display.DisplayFrame);
 
                 System.Threading.Thread.Sleep(500);
 
-            } while (!Globals.Dead);
+            } while (!Snake.Dead);
         }
     } 
 }

@@ -8,26 +8,26 @@ namespace Snake
     {
         public static void SetFrame()
         {
-            Program.Globals.FrameString.Append("╔════════════════════════════╗" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Globals.FrameString.Append("╚════════════════════════════╝ " + System.Environment.NewLine);
+            Program.Display.FrameString.Append("╔════════════════════════════╗" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
+            Program.Display.FrameString.Append("╚════════════════════════════╝ " + System.Environment.NewLine);
         }
     }
 }

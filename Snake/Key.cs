@@ -13,19 +13,19 @@ namespace Snake
                 var info = Console.ReadKey();
                 if (info.KeyChar == 'd')
                 {
-                    Program.Globals.Direction = "Right";
+                    Program.Snake.Direction = "Right";
                 }
                 else if (info.KeyChar == 's')
                 {
-                    Program.Globals.Direction = "Down";
+                    Program.Snake.Direction = "Down";
                 }
                 else if (info.KeyChar == 'a')
                 {
-                    Program.Globals.Direction = "Left";
+                    Program.Snake.Direction = "Left";
                 }
                 else if (info.KeyChar == 'w')
                 {
-                    Program.Globals.Direction = "Up";
+                    Program.Snake.Direction = "Up";
                 }
                 else
                 {
