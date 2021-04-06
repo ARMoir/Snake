@@ -14,7 +14,7 @@ namespace Snake
             public static bool Dead { get; set; } = false;
             public static int Length { get; set; } = 1;
             public static string Direction { get; set; } = "";
-            public static int Speed { get; set; } = 400;
+            public static int Speed { get; set; } = 500;
         }
 
         public static class Display
@@ -82,7 +82,11 @@ namespace Snake
                     Task.Factory.StartNew(() => Beep.Good());
                     Snake.Length++;
                     Food.Feed.Change = true;
-                    Snake.Speed -= 15;
+
+                    if(Snake.Speed > 15)
+                    {
+                        Snake.Speed -= 15;
+                    }   
                 }
 
                 Display.FrameChar[Position] = "Θ";
@@ -103,7 +107,7 @@ namespace Snake
                 Display.DisplayFrame.Clear();
                 
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
-                Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {410 - Snake.Speed}");
+                Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {500 - Snake.Speed}");
                 Display.DisplayFrame.Append(System.Environment.NewLine);
 
                 Console.Clear();
