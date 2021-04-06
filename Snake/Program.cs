@@ -13,7 +13,8 @@ namespace Snake
             public static List<int> Location { get; set; } = new List<int>();
             public static bool Dead { get; set; } = false;
             public static int Length { get; set; } = 1;
-            public static string Direction { get; set; } = "Right";           
+            public static string Direction { get; set; } = "";
+            public static int Speed { get; set; } = 400;
         }
 
         public static class Display
@@ -53,23 +54,35 @@ namespace Snake
                     Position -= Start;
                 }
 
-
                 Snake.Location.Add(Position);
 
                 Display.FrameChar.Clear();
                 Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
-                Display.FrameChar[360] = "§";
-
-                if(Display.FrameChar[Position] == "§")
-                {
-                    Console.Beep(330, 400);
-                    Snake.Length++;
-                }
-
                 Snake.Location.Reverse();
                 int[] Locations = Snake.Location.ToArray();
                 Snake.Location.Reverse();
+
+                if (Display.FrameChar[Position] != " " && Display.FrameChar[Position] != "§" && Display.FrameChar[Position] != "Θ")
+                {
+                    Snake.Dead = true;
+                }
+
+                Food.Add();
+
+                if (!Display.FrameChar.Contains("§"))
+                {
+                    Food.Feed.Change = true;
+                    Food.Add();
+                }
+
+                if (Display.FrameChar[Position] == "§")
+                {
+                    Console.Beep(330, Snake.Speed);
+                    Snake.Length++;
+                    Food.Feed.Change = true;
+                    Snake.Speed -= 10;
+                }
 
                 Display.FrameChar[Position] = "Θ";
                 if (Locations.Length > Snake.Length)
@@ -85,14 +98,15 @@ namespace Snake
                     Snake.Dead = true;
                 }
 
-
                 Display.DisplayFrame.Clear();
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
+                Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {410 - Snake.Speed}");
+                Display.DisplayFrame.Append(System.Environment.NewLine);
 
                 Console.Clear();
                 Console.Write(Display.DisplayFrame);
 
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(Snake.Speed);
 
             } while (!Snake.Dead);
         }
