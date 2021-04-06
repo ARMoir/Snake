@@ -10,27 +10,31 @@ namespace Snake
         {
             do
             {
-                var info = Console.ReadKey();
-                if (info.KeyChar == 'd')
+
+                var Key = Console.ReadKey().Key;
+
+                if (Key == ConsoleKey.W || Key == ConsoleKey.UpArrow)
                 {
-                    Program.Snake.Direction = "Right";
+                    Program.Snake.Direction = "Up";
                 }
-                else if (info.KeyChar == 's')
-                {
-                    Program.Snake.Direction = "Down";
-                }
-                else if (info.KeyChar == 'a')
+                else if (Key == ConsoleKey.A || Key == ConsoleKey.LeftArrow)
                 {
                     Program.Snake.Direction = "Left";
                 }
-                else if (info.KeyChar == 'w')
+
+                else if (Key == ConsoleKey.S || Key == ConsoleKey.DownArrow)
                 {
-                    Program.Snake.Direction = "Up";
+                    Program.Snake.Direction = "Down";
+                }
+                else if (Key == ConsoleKey.D || Key == ConsoleKey.RightArrow)
+                {
+                    Program.Snake.Direction = "Right";
                 }
                 else
                 {
                     //Do Nothiing
                 }
+
             } while (true);
         }
     }
