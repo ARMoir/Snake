@@ -26,8 +26,8 @@ namespace Snake
 
         static void Main(string[] args)
         {
+            Console.SetWindowSize(30, 22);
             Frame.SetFrame();
-
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
             string[] Lines = Display.FrameString.ToString().Split(Environment.NewLine.ToCharArray());
@@ -101,6 +101,7 @@ namespace Snake
                 }
 
                 Display.DisplayFrame.Clear();
+                
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
                 Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {410 - Snake.Speed}");
                 Display.DisplayFrame.Append(System.Environment.NewLine);

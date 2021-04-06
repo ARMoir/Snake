@@ -18,6 +18,8 @@ namespace Snake
             Program.Snake.Direction = "";
             Program.Snake.Speed = 400;
 
+            Food.Feed.Drop = 0;
+            Food.Feed.Check = 0;
             Food.Feed.Change = true;
         }
     }
