@@ -30,7 +30,8 @@ namespace Snake
 
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
-            int Start = 32;
+            string[] Lines = Display.FrameString.ToString().Split(Environment.NewLine.ToCharArray());
+            int Start = Lines[0].Length + 2;
             int Position = (Display.FrameChar.Count / 2) + ((Start / 2) - 2);
 
             Task.Factory.StartNew(() => Key.Press());
@@ -78,10 +79,10 @@ namespace Snake
 
                 if (Display.FrameChar[Position] == "§")
                 {
-                    Console.Beep(330, Snake.Speed);
+                    Task.Factory.StartNew(() => Beep.Good());
                     Snake.Length++;
                     Food.Feed.Change = true;
-                    Snake.Speed -= 10;
+                    Snake.Speed -= 15;
                 }
 
                 Display.FrameChar[Position] = "Θ";
@@ -95,6 +96,7 @@ namespace Snake
 
                 if (Display.FrameChar[Position] != " " && Display.FrameChar[Position] != "§" && Display.FrameChar[Position] != "Θ")
                 {
+                    Task.Factory.StartNew(() => Beep.Bad());
                     Snake.Dead = true;
                 }
 
@@ -109,6 +111,10 @@ namespace Snake
                 System.Threading.Thread.Sleep(Snake.Speed);
 
             } while (!Snake.Dead);
+
+            System.Threading.Thread.Sleep(1000);
+            Reset.Now();
+            Main(args);
         }
     } 
 }

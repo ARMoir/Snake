@@ -10,7 +10,6 @@ namespace Snake
         {
             do
             {
-
                 var Key = Console.ReadKey().Key;
 
                 if (Key == ConsoleKey.W || Key == ConsoleKey.UpArrow)
@@ -21,7 +20,6 @@ namespace Snake
                 {
                     Program.Snake.Direction = "Left";
                 }
-
                 else if (Key == ConsoleKey.S || Key == ConsoleKey.DownArrow)
                 {
                     Program.Snake.Direction = "Down";
