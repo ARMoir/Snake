@@ -32,6 +32,50 @@ namespace Snake
                 {
                     Environment.Exit(-1);
                 }
+                else if (Key == ConsoleKey.G)
+                {
+                    if(Program.Display.Color != ConsoleColor.Green)
+                    {
+                        Program.Display.Color = ConsoleColor.Green;
+                    }
+                    else
+                    {
+                        Program.Display.Color = ConsoleColor.White;
+                    }
+                }
+                else if (Key == ConsoleKey.R)
+                {
+                    if (Program.Display.Color != ConsoleColor.Red)
+                    {
+                        Program.Display.Color = ConsoleColor.Red;
+                    }
+                    else
+                    {
+                        Program.Display.Color = ConsoleColor.White;
+                    }
+                }
+                else if (Key == ConsoleKey.B)
+                {
+                    if (Program.Display.Color != ConsoleColor.Blue)
+                    {
+                        Program.Display.Color = ConsoleColor.Blue;
+                    }
+                    else
+                    {
+                        Program.Display.Color = ConsoleColor.White;
+                    }
+                }
+                else if (Key == ConsoleKey.Y)
+                {
+                    if (Program.Display.Color != ConsoleColor.Yellow)
+                    {
+                        Program.Display.Color = ConsoleColor.Yellow;
+                    }
+                    else
+                    {
+                        Program.Display.Color = ConsoleColor.White;
+                    }
+                }
                 else
                 {
                     //Do Nothiing

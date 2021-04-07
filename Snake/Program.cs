@@ -23,6 +23,7 @@ namespace Snake
             public static List<string> FrameChar { get; set; } = new List<string>();
             public static StringBuilder FrameString { get; set; } = new StringBuilder();
             public static StringBuilder DisplayFrame { get; set; } = new StringBuilder();
+            public static ConsoleColor Color { get; set; } = ConsoleColor.White;
         }
 
         static void Main(string[] args)
@@ -32,7 +33,7 @@ namespace Snake
             {
                 Console.SetWindowSize(30, 22);
             }
-
+            
             //Pull in the game board
             Frame.SetFrame();
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
@@ -48,6 +49,8 @@ namespace Snake
             //Game Loop
             do
             {
+                //Set text color
+                Console.ForegroundColor = Display.Color;
 
                 //Check Direction for movement
                 switch (Snake.Direction)
