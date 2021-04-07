@@ -134,7 +134,7 @@ namespace Snake
                 //Update Display
                 Display.DisplayFrame.Clear();
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
-                Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {500 - Snake.Speed}");
+                Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {505 - Snake.Speed}");
                 Display.DisplayFrame.Append(System.Environment.NewLine);
 
                 //Write Display to console
