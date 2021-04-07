@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,33 +27,40 @@ namespace Snake
 
         static void Main(string[] args)
         {
-            Console.SetWindowSize(30, 22);
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Console.SetWindowSize(30, 22);
+            }
+
             Frame.SetFrame();
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
             string[] Lines = Display.FrameString.ToString().Split(Environment.NewLine.ToCharArray());
-            int Start = Lines[0].Length + 2;
-            int Position = (Display.FrameChar.Count / 2) + ((Start / 2) - 2);
+            int Start = Lines[0].Length + 1;
+            int Position = (Display.FrameChar.Count / 2) + (Start / 2);
 
             Task.Factory.StartNew(() => Key.Press());
 
             do
             {
-                if (Snake.Direction == "Right")
+                switch (Snake.Direction)
                 {
-                    Position++;
-                }
-                if (Snake.Direction == "Down")
-                {
-                    Position += Start;
-                }
-                if (Snake.Direction == "Left")
-                {
-                    Position--;
-                }
-                if (Snake.Direction == "Up")
-                {
-                    Position -= Start;
+                    case "Left":
+                        Position--;
+                        break;
+
+                    case "Right":
+                        Position++;
+                        break;
+
+                    case "Up":
+                        Position -= Start;
+                        break;
+
+                    case "Down":
+                        Position += Start;
+                        break;
                 }
 
                 Snake.Location.Add(Position);

@@ -8,26 +8,26 @@ namespace Snake
     {
         public static void SetFrame()
         {
-            Program.Display.FrameString.Append("╔════════════════════════════╗" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("║                            ║" + System.Environment.NewLine);
-            Program.Display.FrameString.Append("╚════════════════════════════╝ " + System.Environment.NewLine);
+            Program.Display.FrameString.Append("╔════════════════════════════╗" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("║                            ║" + (Char)10);
+            Program.Display.FrameString.Append("╚════════════════════════════╝" + (Char)10);
         }
     }
 }
