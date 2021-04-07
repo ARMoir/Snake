@@ -27,23 +27,29 @@ namespace Snake
 
         static void Main(string[] args)
         {
-            
+            //Can only set window size in windows
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Console.SetWindowSize(30, 22);
             }
 
+            //Pull in the game board
             Frame.SetFrame();
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
-            string[] Lines = Display.FrameString.ToString().Split(Environment.NewLine.ToCharArray());
-            int Start = Lines[0].Length + 1;
-            int Position = (Display.FrameChar.Count / 2) + (Start / 2);
+            //Set the values for movement calculations
+            string[] Lines = Display.FrameString.ToString().Split((Char)10);
+            int Width = Lines[0].Length + 1;
+            int Position = (Display.FrameChar.Count / 2) + (Width / 2);
 
+            //Start thred to read key press
             Task.Factory.StartNew(() => Key.Press());
 
+            //Game Loop
             do
             {
+
+                //Check Direction for movement
                 switch (Snake.Direction)
                 {
                     case "Left":
@@ -55,36 +61,36 @@ namespace Snake
                         break;
 
                     case "Up":
-                        Position -= Start;
+                        Position -= Width;
                         break;
 
                     case "Down":
-                        Position += Start;
+                        Position += Width;
                         break;
                 }
 
+                //Add current location to list
                 Snake.Location.Add(Position);
 
+                //Pull Display for updating
                 Display.FrameChar.Clear();
                 Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
+                //Reverse locations to get most recent first
                 Snake.Location.Reverse();
                 int[] Locations = Snake.Location.ToArray();
                 Snake.Location.Reverse();
 
+                //Check for collision 
                 if (Display.FrameChar[Position] != " " && Display.FrameChar[Position] != "§" && Display.FrameChar[Position] != "Θ")
                 {
                     Snake.Dead = true;
                 }
 
+                //Add food to board
                 Food.Add();
 
-                if (!Display.FrameChar.Contains("§"))
-                {
-                    Food.Feed.Change = true;
-                    Food.Add();
-                }
-
+                //Check if eating
                 if (Display.FrameChar[Position] == "§")
                 {
                     Task.Factory.StartNew(() => Beep.Good());
@@ -97,6 +103,7 @@ namespace Snake
                     }   
                 }
 
+                //Draw snake to board
                 Display.FrameChar[Position] = "Θ";
                 if (Locations.Length > Snake.Length)
                 {
@@ -106,25 +113,34 @@ namespace Snake
                     }
                 }
 
+                //Confirm board has food
+                if (!Display.FrameChar.Contains("§"))
+                {
+                    Food.Feed.Change = true;
+                    Food.Add();
+                }
+
+                //Check for collision 
                 if (Display.FrameChar[Position] != " " && Display.FrameChar[Position] != "§" && Display.FrameChar[Position] != "Θ")
                 {
                     Task.Factory.StartNew(() => Beep.Bad());
                     Snake.Dead = true;
                 }
 
+                //Update Display
                 Display.DisplayFrame.Clear();
-                
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
                 Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {500 - Snake.Speed}");
                 Display.DisplayFrame.Append(System.Environment.NewLine);
-
                 Console.Clear();
                 Console.Write(Display.DisplayFrame);
 
+                //Set game speed
                 System.Threading.Thread.Sleep(Snake.Speed);
 
             } while (!Snake.Dead);
 
+            //Reset game
             System.Threading.Thread.Sleep(1000);
             Reset.Now();
             Main(args);
