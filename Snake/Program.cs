@@ -137,6 +137,7 @@ namespace Snake
                 Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {500 - Snake.Speed}");
                 Display.DisplayFrame.Append(System.Environment.NewLine);
 
+                //Write Display to console
                 Console.CursorVisible = false;
                 Console.SetCursorPosition(0, 0);
                 Console.Write(Display.DisplayFrame);
@@ -148,6 +149,7 @@ namespace Snake
 
             //Reset game
             System.Threading.Thread.Sleep(1000);
+            Console.Clear();
             Reset.Now();
             Main(args);
         }
