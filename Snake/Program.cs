@@ -33,7 +33,8 @@ namespace Snake
             {
                 Console.SetWindowSize(30, 22);
             }
-            
+
+
             //Pull in the game board
             Frame.SetFrame();
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
@@ -135,7 +136,9 @@ namespace Snake
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
                 Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {500 - Snake.Speed}");
                 Display.DisplayFrame.Append(System.Environment.NewLine);
-                Console.Clear();
+
+                Console.CursorVisible = false;
+                Console.SetCursorPosition(0, 0);
                 Console.Write(Display.DisplayFrame);
 
                 //Set game speed
