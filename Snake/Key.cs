@@ -28,6 +28,10 @@ namespace Snake
                 {
                     Program.Snake.Direction = "Right";
                 }
+                else if (Key == ConsoleKey.Q)
+                {
+                    Environment.Exit(-1);
+                }
                 else
                 {
                     //Do Nothiing
