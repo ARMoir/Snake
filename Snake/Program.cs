@@ -28,32 +28,31 @@ namespace Snake
 
         static void Main(string[] args)
         {
-            //Can only set window size in windows
+            //Can only set Window Size in Windows
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Console.SetWindowSize(30, 22);
             }
 
-
-            //Pull in the game board
+            //Pull in the Game Board
             Frame.SetFrame();
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
-            //Set the values for movement calculations
+            //Set the Values for Movement Calculations
             string[] Lines = Display.FrameString.ToString().Split((Char)10);
             int Width = Lines[0].Length + 1;
             int Position = (Display.FrameChar.Count / 2) + (Width / 2);
 
-            //Start thred to read key press
+            //Start Thred to Read Keypress
             Task.Factory.StartNew(() => Key.Press());
 
             //Game Loop
             do
             {
-                //Set text color
+                //Set Text Color
                 Console.ForegroundColor = Display.Color;
 
-                //Check Direction for movement
+                //Check Direction for Movement
                 switch (Snake.Direction)
                 {
                     case "Left":
@@ -73,23 +72,20 @@ namespace Snake
                         break;
                 }
 
-                //Add current location to list
+                //Add Current Location to List
                 Snake.Location.Add(Position);
 
-                //Pull Display for updating
+                //Pull Display for Updating
                 Display.FrameChar.Clear();
                 Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
-                //Reverse locations to get most recent first
+                //Reverse Locations to get the Most Recent First
                 Snake.Location.Reverse();
                 int[] Locations = Snake.Location.ToArray();
                 Snake.Location.Reverse();
 
-                //Check for collision 
-                if (Display.FrameChar[Position] != " " && Display.FrameChar[Position] != "§" && Display.FrameChar[Position] != "Θ")
-                {
-                    Snake.Dead = true;
-                }
+                //Check for Collision 
+                Collision.Check(Position);
 
                 //Add food to board
                 Food.Add();
@@ -125,11 +121,7 @@ namespace Snake
                 }
 
                 //Check for collision 
-                if (Display.FrameChar[Position] != " " && Display.FrameChar[Position] != "§" && Display.FrameChar[Position] != "Θ")
-                {
-                    Task.Factory.StartNew(() => Beep.Bad());
-                    Snake.Dead = true;
-                }
+                Collision.Check(Position);
 
                 //Update Display
                 Display.DisplayFrame.Clear();

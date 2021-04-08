@@ -76,6 +76,17 @@ namespace Snake
                         Program.Display.Color = ConsoleColor.White;
                     }
                 }
+                else if (Key == ConsoleKey.P)
+                {
+                    if (Program.Display.Color != ConsoleColor.Magenta)
+                    {
+                        Program.Display.Color = ConsoleColor.Magenta;
+                    }
+                    else
+                    {
+                        Program.Display.Color = ConsoleColor.White;
+                    }
+                }
                 else
                 {
                     //Do Nothiing
