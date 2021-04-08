@@ -24,7 +24,7 @@ namespace Snake
 
             if (Feed.Change)
             {
-                Feed.Check = Feed.Random.Next(Program.Display.FrameChar.Count - 1);
+                Feed.Check = Feed.Random.Next(Program.Display.FrameChar.Count);
                 Feed.Change = false;
             }
 

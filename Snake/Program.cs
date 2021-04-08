@@ -35,6 +35,7 @@ namespace Snake
             }
 
             //Pull in the Game Board
+            Console.Clear();
             Frame.SetFrame();
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
 
@@ -87,10 +88,10 @@ namespace Snake
                 //Check for Collision 
                 Collision.Check(Position);
 
-                //Add food to board
+                //Add Food to Board
                 Food.Add();
 
-                //Check if eating
+                //Check if Eating
                 if (Display.FrameChar[Position] == "§")
                 {
                     Task.Factory.StartNew(() => Beep.Good());
@@ -103,7 +104,7 @@ namespace Snake
                     }   
                 }
 
-                //Draw snake to board
+                //Draw Snake to Board
                 Display.FrameChar[Position] = "Θ";
                 if (Locations.Length > Snake.Length)
                 {
@@ -113,14 +114,14 @@ namespace Snake
                     }
                 }
 
-                //Confirm board has food
+                //Confirm Board has Food
                 if (!Display.FrameChar.Contains("§"))
                 {
                     Food.Feed.Change = true;
                     Food.Add();
                 }
 
-                //Check for collision 
+                //Check for Collision 
                 Collision.Check(Position);
 
                 //Update Display
@@ -129,18 +130,18 @@ namespace Snake
                 Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {505 - Snake.Speed}");
                 Display.DisplayFrame.Append(System.Environment.NewLine);
 
-                //Write Display to console
+                //Write Display to Console
                 Console.CursorVisible = false;
                 Console.SetCursorPosition(0, 0);
                 Console.Write(Display.DisplayFrame);
 
-                //Set game speed
+                //Set Game Speed
                 System.Threading.Thread.Sleep(Snake.Speed);
 
             } while (!Snake.Dead);
 
-            //Reset game
-            System.Threading.Thread.Sleep(1000);
+            //Reset Game
+            System.Threading.Thread.Sleep(2000);
             Console.Clear();
             Reset.Now();
             Main(args);

@@ -11,8 +11,8 @@ namespace Snake
         {
             if (Program.Display.FrameChar[Position] != " " && Program.Display.FrameChar[Position] != "§" && Program.Display.FrameChar[Position] != "Θ")
             {
-                Program.Snake.Dead = true;
                 Task.Factory.StartNew(() => Beep.Bad());
+                Program.Snake.Dead = true;
             }
         }
     }
