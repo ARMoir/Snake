@@ -11,11 +11,11 @@ namespace Snake
     {
         public static class Snake
         {
+            public enum Directions { None, Up, Down, Left, Right }
             public static List<int> Location { get; set; } = new List<int>();
             public static bool Dead { get; set; } = false;
             public static int Length { get; set; } = 1;
             public static int Speed { get; set; } = 500;
-            public enum Directions {None, Up, Down, Left, Right}
             public static int Direction { get; set; } = (int)Directions.None;
         }
 

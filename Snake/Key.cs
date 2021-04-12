@@ -12,84 +12,75 @@ namespace Snake
             {
                 var Key = Console.ReadKey().Key;
 
-                if (Key == ConsoleKey.W || Key == ConsoleKey.UpArrow)
+                switch (Key)
                 {
-                    Program.Snake.Direction = (int)Program.Snake.Directions.Up;
-                }
-                else if (Key == ConsoleKey.A || Key == ConsoleKey.LeftArrow)
-                {
-                    Program.Snake.Direction = (int)Program.Snake.Directions.Left;
-                }
-                else if (Key == ConsoleKey.S || Key == ConsoleKey.DownArrow)
-                {
-                    Program.Snake.Direction = (int)Program.Snake.Directions.Down;
-                }
-                else if (Key == ConsoleKey.D || Key == ConsoleKey.RightArrow)
-                {
-                    Program.Snake.Direction = (int)Program.Snake.Directions.Right;
-                }
-                else if (Key == ConsoleKey.Q)
-                {
-                    Environment.Exit(-1);
-                }
-                else if (Key == ConsoleKey.G)
-                {
-                    if(Program.Display.Color != ConsoleColor.Green)
-                    {
-                        Program.Display.Color = ConsoleColor.Green;
-                    }
-                    else
-                    {
-                        Program.Display.Color = ConsoleColor.White;
-                    }
-                }
-                else if (Key == ConsoleKey.R)
-                {
-                    if (Program.Display.Color != ConsoleColor.Red)
-                    {
-                        Program.Display.Color = ConsoleColor.Red;
-                    }
-                    else
-                    {
-                        Program.Display.Color = ConsoleColor.White;
-                    }
-                }
-                else if (Key == ConsoleKey.B)
-                {
-                    if (Program.Display.Color != ConsoleColor.Blue)
-                    {
-                        Program.Display.Color = ConsoleColor.Blue;
-                    }
-                    else
-                    {
-                        Program.Display.Color = ConsoleColor.White;
-                    }
-                }
-                else if (Key == ConsoleKey.Y)
-                {
-                    if (Program.Display.Color != ConsoleColor.Yellow)
-                    {
-                        Program.Display.Color = ConsoleColor.Yellow;
-                    }
-                    else
-                    {
-                        Program.Display.Color = ConsoleColor.White;
-                    }
-                }
-                else if (Key == ConsoleKey.P)
-                {
-                    if (Program.Display.Color != ConsoleColor.Magenta)
-                    {
-                        Program.Display.Color = ConsoleColor.Magenta;
-                    }
-                    else
-                    {
-                        Program.Display.Color = ConsoleColor.White;
-                    }
-                }
-                else
-                {
-                    //Do Nothiing
+                    case ConsoleKey.UpArrow:
+                    case ConsoleKey.W:
+                        Program.Snake.Direction = (int)Program.Snake.Directions.Up;
+                        break;
+
+                    case ConsoleKey.LeftArrow:
+                    case ConsoleKey.A:
+                        Program.Snake.Direction = (int)Program.Snake.Directions.Left;
+                        break;
+
+                    case ConsoleKey.DownArrow:
+                    case ConsoleKey.S:
+                        Program.Snake.Direction = (int)Program.Snake.Directions.Down;
+                        break;
+
+                    case ConsoleKey.RightArrow:
+                    case ConsoleKey.D:
+                        Program.Snake.Direction = (int)Program.Snake.Directions.Right;
+                        break;
+
+                    case ConsoleKey.Q:
+                        Environment.Exit(-1);
+                        break;
+
+                    case ConsoleKey.R:
+                        if (Program.Display.Color != ConsoleColor.Red)
+                        {
+                            Program.Display.Color = ConsoleColor.Red;
+                        }
+                        else
+                        {
+                            Program.Display.Color = ConsoleColor.White;
+                        }
+                        break;
+
+                    case ConsoleKey.G:
+                        if (Program.Display.Color != ConsoleColor.Green)
+                        {
+                            Program.Display.Color = ConsoleColor.Green;
+                        }
+                        else
+                        {
+                            Program.Display.Color = ConsoleColor.White;
+                        }
+                        break;
+
+                    case ConsoleKey.B:
+                        if (Program.Display.Color != ConsoleColor.Blue)
+                        {
+                            Program.Display.Color = ConsoleColor.Blue;
+                        }
+                        else
+                        {
+                            Program.Display.Color = ConsoleColor.White;
+                        }
+                        break;
+
+                    case ConsoleKey.Y:
+                        if (Program.Display.Color != ConsoleColor.Yellow)
+                        {
+                            Program.Display.Color = ConsoleColor.Yellow;
+                        }
+                        else
+                        {
+                            Program.Display.Color = ConsoleColor.White;
+                        }
+                        break;
                 }
 
             } while (true);
