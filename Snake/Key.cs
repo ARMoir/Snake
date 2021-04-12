@@ -71,6 +71,28 @@ namespace Snake
                         }
                         break;
 
+                    case ConsoleKey.C:
+                        if (Program.Display.Color != ConsoleColor.Cyan)
+                        {
+                            Program.Display.Color = ConsoleColor.Cyan;
+                        }
+                        else
+                        {
+                            Program.Display.Color = ConsoleColor.White;
+                        }
+                        break;
+
+                    case ConsoleKey.M:
+                        if (Program.Display.Color != ConsoleColor.Magenta)
+                        {
+                            Program.Display.Color = ConsoleColor.Magenta;
+                        }
+                        else
+                        {
+                            Program.Display.Color = ConsoleColor.White;
+                        }
+                        break;
+
                     case ConsoleKey.Y:
                         if (Program.Display.Color != ConsoleColor.Yellow)
                         {
