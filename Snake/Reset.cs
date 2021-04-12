@@ -15,7 +15,7 @@ namespace Snake
             Program.Snake.Location.Clear();
             Program.Snake.Dead = false;
             Program.Snake.Length = 1;
-            Program.Snake.Direction = "";
+            Program.Snake.Direction = (int)Program.Snake.Directions.None;
             Program.Snake.Speed = 500;
 
             Food.Feed.Drop = 0;

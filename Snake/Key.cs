@@ -14,19 +14,19 @@ namespace Snake
 
                 if (Key == ConsoleKey.W || Key == ConsoleKey.UpArrow)
                 {
-                    Program.Snake.Direction = "Up";
+                    Program.Snake.Direction = (int)Program.Snake.Directions.Up;
                 }
                 else if (Key == ConsoleKey.A || Key == ConsoleKey.LeftArrow)
                 {
-                    Program.Snake.Direction = "Left";
+                    Program.Snake.Direction = (int)Program.Snake.Directions.Left;
                 }
                 else if (Key == ConsoleKey.S || Key == ConsoleKey.DownArrow)
                 {
-                    Program.Snake.Direction = "Down";
+                    Program.Snake.Direction = (int)Program.Snake.Directions.Down;
                 }
                 else if (Key == ConsoleKey.D || Key == ConsoleKey.RightArrow)
                 {
-                    Program.Snake.Direction = "Right";
+                    Program.Snake.Direction = (int)Program.Snake.Directions.Right;
                 }
                 else if (Key == ConsoleKey.Q)
                 {

@@ -14,8 +14,9 @@ namespace Snake
             public static List<int> Location { get; set; } = new List<int>();
             public static bool Dead { get; set; } = false;
             public static int Length { get; set; } = 1;
-            public static string Direction { get; set; } = "";
             public static int Speed { get; set; } = 500;
+            public enum Directions {None, Up, Down, Left, Right}
+            public static int Direction { get; set; } = (int)Directions.None;
         }
 
         public static class Display
@@ -54,21 +55,21 @@ namespace Snake
                 Console.ForegroundColor = Display.Color;
 
                 //Check Direction for Movement
-                switch (Snake.Direction)
+                switch ((Snake.Directions)Snake.Direction)
                 {
-                    case "Left":
+                    case Snake.Directions.Left:
                         Position--;
                         break;
 
-                    case "Right":
+                    case Snake.Directions.Right:
                         Position++;
                         break;
 
-                    case "Up":
+                    case Snake.Directions.Up:
                         Position -= Width;
                         break;
 
-                    case "Down":
+                    case Snake.Directions.Down:
                         Position += Width;
                         break;
                 }
