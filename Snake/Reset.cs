@@ -12,11 +12,12 @@ namespace Snake
             Program.Display.FrameString.Clear();
             Program.Display.DisplayFrame.Clear();
 
+            Program.Snake.Direction = (int)Program.Snake.Directions.None;
             Program.Snake.Location.Clear();
             Program.Snake.Dead = false;
-            Program.Snake.Length = 1;
-            Program.Snake.Direction = (int)Program.Snake.Directions.None;
+            Program.Snake.Length = 1;         
             Program.Snake.Speed = 500;
+
 
             Food.Feed.Drop = 0;
             Food.Feed.Check = 0;
