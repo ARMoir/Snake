@@ -36,6 +36,7 @@ namespace Snake
             }
 
             //Pull in the Game Board
+            Console.CursorVisible = false;
             Console.Clear();
             Frame.SetFrame();
             Display.FrameChar.AddRange(Display.FrameString.ToString().Select(Chars => Chars.ToString()));
@@ -132,7 +133,6 @@ namespace Snake
                 Display.DisplayFrame.Append(System.Environment.NewLine);
 
                 //Write Display to Console
-                Console.CursorVisible = false;
                 Console.SetCursorPosition(0, 0);
                 Console.Write(Display.DisplayFrame);
 
