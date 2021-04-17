@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Snake
@@ -8,12 +9,18 @@ namespace Snake
     {
         public static void Bad()
         {
-            Console.Beep(330, 500);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Console.Beep(330, 500);
+            }
         }
 
         public static void Good()
         {
-            Console.Beep(370, 500);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Console.Beep(370, 500);
+            }
         }
     }
 }

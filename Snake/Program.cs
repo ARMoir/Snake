@@ -25,6 +25,7 @@ namespace Snake
             public static StringBuilder FrameString { get; set; } = new StringBuilder();
             public static StringBuilder DisplayFrame { get; set; } = new StringBuilder();
             public static ConsoleColor Color { get; set; } = ConsoleColor.White;
+            public static int HighScore { get; set; } = 0;
         }
 
         static void Main(string[] args)
@@ -33,6 +34,9 @@ namespace Snake
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Console.SetWindowSize(30, 22);
+
+                //Get High Score from Settings
+                Display.HighScore = Properties.Settings.Default.Score;
             }
 
             //Pull in the Game Board
@@ -129,7 +133,7 @@ namespace Snake
                 //Update Display
                 Display.DisplayFrame.Clear();
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
-                Display.DisplayFrame.Append($"Score: {Snake.Length - 1} Speed: {505 - Snake.Speed}");
+                Display.DisplayFrame.Append($"  Score: {Snake.Length - 1}          Best: {Display.HighScore}");
                 Display.DisplayFrame.Append(System.Environment.NewLine);
 
                 //Write Display to Console
@@ -141,8 +145,20 @@ namespace Snake
 
             } while (!Snake.Dead);
 
+            //Check High Score
+            if (Snake.Length > Display.HighScore)
+            {
+                Display.HighScore = Snake.Length - 1;
+
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    Properties.Settings.Default.Score = Display.HighScore;
+                    Properties.Settings.Default.Save();
+                }
+            }
+
             //Reset Game
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(1000);
             Console.Clear();
             Reset.Now();
             Main(args);
