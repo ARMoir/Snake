@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -33,10 +34,7 @@ namespace Snake
             //Can only set Window Size in Windows
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Console.SetWindowSize(30, 22);
-
-                //Get High Score from Settings
-                Display.HighScore = Properties.Settings.Default.Score;
+                Console.SetWindowSize(30, 22);   
             }
 
             //Pull in the Game Board
@@ -131,6 +129,7 @@ namespace Snake
                 Collision.Check(Position);
 
                 //Update Display
+                Score.Update();
                 Display.DisplayFrame.Clear();
                 Display.FrameChar.ForEach(Item => Display.DisplayFrame.Append(Item));
                 Display.DisplayFrame.Append($"  Score: {Snake.Length - 1}          Best: {Display.HighScore}");
@@ -145,17 +144,7 @@ namespace Snake
 
             } while (!Snake.Dead);
 
-            //Check High Score
-            if (Snake.Length > Display.HighScore)
-            {
-                Display.HighScore = Snake.Length - 1;
-
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    Properties.Settings.Default.Score = Display.HighScore;
-                    Properties.Settings.Default.Save();
-                }
-            }
+            
 
             //Reset Game
             System.Threading.Thread.Sleep(1000);
