@@ -14,7 +14,10 @@ namespace Snake
             try
             {
                 //Get High Score from Settings
-                Program.Display.HighScore = Properties.Settings.Default.Score;
+                if (Program.Display.HighScore == 0)
+                {
+                    Program.Display.HighScore = Properties.Settings.Default.Score;
+                }
 
                 //Check High Score
                 if (Program.Snake.Length > Program.Display.HighScore)
@@ -26,7 +29,23 @@ namespace Snake
                 }
             }
             catch (Exception)
-            {           
+            {
+            }
+        }
+
+        public static void Clear()
+        {
+            try
+            {
+                Program.Display.HighScore = 0;
+                Directory.CreateDirectory(Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData, System.Environment.SpecialFolderOption.Create));
+                Properties.Settings.Default.Score = 0;
+                Properties.Settings.Default.Save();
+                Console.Clear();
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

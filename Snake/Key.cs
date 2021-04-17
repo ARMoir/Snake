@@ -34,6 +34,10 @@ namespace Snake
                         Program.Snake.Direction = (int)Program.Snake.Directions.Right;
                         break;
 
+                    case ConsoleKey.Delete:
+                        Score.Clear();
+                        break;
+
                     case ConsoleKey.Q:
                         Environment.Exit(-1);
                         break;
