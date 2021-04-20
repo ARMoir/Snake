@@ -16,7 +16,7 @@ namespace Snake
             public static List<int> Location { get; set; } = new List<int>();
             public static bool Dead { get; set; } = false;
             public static int Length { get; set; } = 1;
-            public static int Speed { get; set; } = 500;
+            public static int Speed { get; set; } = 400;
             public static int Direction { get; set; } = (int)Directions.None;
         }
 
@@ -101,11 +101,7 @@ namespace Snake
                     Task.Factory.StartNew(() => Beep.Good());
                     Snake.Length++;
                     Food.Feed.Change = true;
-
-                    if(Snake.Speed > 15)
-                    {
-                        Snake.Speed -= 15;
-                    }   
+                    if(Snake.Speed > 5){Snake.Speed -= 5;}   
                 }
 
                 //Draw Snake to Board
@@ -143,8 +139,6 @@ namespace Snake
                 System.Threading.Thread.Sleep(Snake.Speed);
 
             } while (!Snake.Dead);
-
-            
 
             //Reset Game
             System.Threading.Thread.Sleep(1000);
